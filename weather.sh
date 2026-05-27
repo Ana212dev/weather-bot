@@ -1,6 +1,7 @@
 #!/bin/bash
+source .env
 
-API_KEY="c9c078267b5ee4f6018a4f36c6a9f207"
+API_KEY="$API_KEY"
 CITY="Tampa"
 URL="https://api.openweathermap.org/data/2.5/weather?q=$CITY&appid=$API_KEY&units=imperial"
 
