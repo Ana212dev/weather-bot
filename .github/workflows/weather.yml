@@ -1,0 +1,30 @@
+name: Daily Weather Bot
+
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+jobs:
+  update-weather:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Set up API key
+      run: echo "API_KEY=${{ secrets.OPENWEATHER_API_KEY }}" > .env
+
+    - name: Run weather script
+      run: |
+        chmod +x weather.sh
+        ./weather.sh
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+        git add weather.txt
+        git commit -m "Daily weather update" || echo "No changes to commit"
+        git push
