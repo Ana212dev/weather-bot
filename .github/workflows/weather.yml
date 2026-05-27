@@ -28,3 +28,4 @@ jobs:
         git add weather.txt
         git commit -m "Daily weather update" || echo "No changes to commit"
         git push
+
