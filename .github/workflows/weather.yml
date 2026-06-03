@@ -26,13 +26,11 @@ jobs:
         chmod +x weather.sh
         ./weather.sh
 
-    - name: Configure Git
-        run: |
+
+- name: Commit and push changes
+      run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-    - name: Commit and push changes
-      run: |
         git add weather.txt
         git commit -m "Daily weather update" || echo "No changes to commit"
         git push
