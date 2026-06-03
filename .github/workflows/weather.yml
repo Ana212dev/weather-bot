@@ -19,6 +19,13 @@ jobs:
       with:
         persist-credentials: true
 
+    - name: Prepare repo for pushing
+      run: |
+        git fetch --unshallow || true
+        git fetch origin master
+        git checkout master
+        git branch --set-upstream-to=origin/master master
+
     - name: Set up API key
       run: echo "API_KEY=${{ secrets.OPENWEATHER_API_KEY }}" > .env
 
@@ -36,6 +43,8 @@ jobs:
         git commit -m "Daily weather update" || echo "No changes to commit"
         git pull --rebase --autostash
         git push
+
+
 
 
 
