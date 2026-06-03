@@ -26,6 +26,7 @@ jobs:
         ./weather.sh
 
     - name: Commit and push changes
+      shell: bash
       run: |
         git config --local user.name "github-actions"
         git config --local user.email "github-actions@github.com"
