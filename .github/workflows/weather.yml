@@ -5,7 +5,6 @@ on:
     - cron: "0 12 * * *"
   workflow_dispatch:
 
-
 jobs:
   update-weather:
     runs-on: ubuntu-latest
@@ -26,14 +25,14 @@ jobs:
         chmod +x weather.sh
         ./weather.sh
 
-
-- name: Commit and push changes
+    - name: Commit and push changes
       run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
         git add weather.txt
         git commit -m "Daily weather update" || echo "No changes to commit"
         git push
+
 
 
 
