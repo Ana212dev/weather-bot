@@ -41,8 +41,8 @@ jobs:
         git config --local user.email "github-actions@github.com"
         git add weather.txt
         git commit -m "Daily weather update" || echo "No changes to commit"
-        git pull --rebase --strategy-option=theirs
-        git push
+        git push --force
+
 
 
 
